@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Colégio Unidade Polo — Apresentação e Galeria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: linear-gradient(180deg, #071029 0%, #0b1220 100%);
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --accent: #06b6d4;
+            --muted: rgba(255, 255, 255, 0.85);
+            --btn-primary: linear-gradient(90deg, #1a73e8, #0f57c2);
+            --btn-secondary: linear-gradient(90deg, #0f2b57, #1a3b7a);
+            --radius: 12px;
+            --gap: 18px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Montserrat, system-ui, Arial, sans-serif;
+            background: var(--bg);
+            color: #fff
+        }
+
+        .wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px
+        }
+
+        .card {
+            width: min(1100px, 96%);
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
+            text-align: left;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 8px
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #c8102e, #ff6b6b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 1.1rem;
+            flex: 0 0 72px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--accent)
+        }
+
+        p.lead {
+            margin: 8px 0 14px;
+            color: var(--muted);
+            line-height: 1.45
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: var(--gap);
+            align-items: start;
+        }
+
+        .about {
+            font-size: 0.98rem;
+            color: rgba(255, 255, 255, 0.95)
+        }
+
+        .meta {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.04)
+        }
+
+        .meta b {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--accent)
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: 0;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .btn-primary {
+            background: var(--btn-primary)
+        }
+
+        .btn-linkedin {
+            background: #0a66c2
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted)
+        }
+
+        .small {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 8px
+        }
+
+        footer {
+            margin-top: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem
+        }
+
+        /* GALERIA */
+        .gallery {
+            margin-top: 18px;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .track {
+            display: flex;
+            gap: 10px;
+            transition: transform .28s cubic-bezier(.22, .9, .3, 1);
+            will-change: transform;
+            padding: 12px;
+            user-select: none;
+            -webkit-user-drag: none;
+            touch-action: pan-y;
+        }
+
+        .slide {
+            flex: 0 0 auto;
+            width: calc(100% - 24px);
+            max-width: 980px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            overflow: auto;
+            padding-bottom: 6px;
+        }
+
+        .thumbs button {
+            width: 84px;
+            height: 56px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            padding: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .thumbs img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.45);
+            border: 0;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .nav-btn.left {
+            left: 10px
+        }
+
+        .nav-btn.right {
+            right: 10px
+        }
+
+        /* Map wrapper separate from buttons */
+        .map-wrapper {
+            margin-top: 12px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.12);
+        }
+
+        .map-inner {
+            width: 100%;
+            height: 200px;
+        }
+
+        /* Buttons container OUTSIDE the map box */
+        .meta-actions {
+            margin-top: 14px;
+            /* ensures buttons are outside the map box */
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        /* "Sobre mim" buttons under the about text */
+        .about-actions {
+            margin-top: 14px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* responsive adjustments */
+        @media (max-width:1100px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .meta {
+                order: 2
+            }
+        }
+
+        @media (max-width:720px) {
+            .slide img {
+                height: 260px
+            }
+
+            .slide {
+                width: calc(100% - 24px)
+            }
+
+            .meta-actions {
+                justify-content: flex-start
+            }
+
+            .about-actions {
+                justify-content: flex-start
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <article class="card" role="main" aria-labelledby="title">
+            <header>
+                <img class="logo" src="simbolo.jpg">
+                <div>
+                    <h1 id="title">Colégio Unidade Polo — Arapongas, PR</h1>
+                    <p class="lead">Conheça a Unidade Polo de Arapongas: educação de qualidade, projetos pedagógicos e
+                        forte vínculo com a comunidade.</p>
+                </div>
+            </header>
+
+            <section class="grid" aria-label="Conteúdo principal">
+                <div>
+                    <div class="about">
+                        <p>O <strong>Colégio Unidade Polo</strong> de Arapongas oferece ensino fundamental e médio com
+                            ênfase em práticas ativas, laboratórios, atividades esportivas e projetos sociais. Nossa
+                            equipe pedagógica trabalha para desenvolver competências acadêmicas e socioemocionais.
+                        </p>
+                           
+                        <p> <strong>  Curso Técnico em Inteligência Artificial e Dados</strong></p>
+                            <li> Objetivo: formar quem sabe trabalhar com dados e criar soluções básicas de IA.</li>
+                            <li>  Principais conteúdos: Python básico; manipulação de dados (pandas); visualização; conceitos de machine learning; treino e avaliação de modelos.</li>
+                            <li> Habilidades práticas: preparar conjuntos de dados, treinar modelos simples (classificação/regressão), criar protótipos (chatbot, classificador de imagens).</li>
+                            <li>  Complementos importantes: ética e privacidade de dados; apresentação de resultados; uso de bibliotecas (scikit‑learn, NumPy).</li>
+                            <li>  Resultado esperado: capacidade de montar pequenos projetos de IA e interpretar resultados para aplicações escolares ou locais.</li>
+                        
+                            <p> <strong>  Técnico em Desenvolvimento de Sistemas (DDS) </strong></p>
+                            <li>Objetivo: formar desenvolvedores capazes de criar aplicações web e sistemas.</li>
+                            <li>Principais conteúdos: lógica de programação; HTML/CSS; JavaScript (front‑end); noções de back‑end; bancos de dados (SQL).</li>
+                            <li>Habilidades práticas: construir páginas e aplicações, versionamento com Git, testar e documentar projetos.</li>
+                            <li>Projetos: desenvolvimento de aplicações reais para portfólio (sites, sistemas simples).</li>
+                            <li>Resultado esperado: criar, publicar e manter aplicações básicas; preparar portfólio para estágio/emprego.</li>
+                        
+
+                        <ul>
+                            <li>Projetos interdisciplinares e feiras científicas</li>
+                            <li>Atividades extracurriculares: esportes, música e tecnologia</li>
+                            <li>Apoio pedagógico e orientação de carreira</li>
+                        </ul>
+
+
+                        <div class="gallery" aria-label="Galeria de fotos do colégio">
+                            <h3 style="color:var(--accent);margin:12px 0 8px">Galeria de Fotos</h3>
+
+                            <!-- carousel container -->
+                            <div class="carousel" id="carousel" aria-roledescription="carousel">
+                                <button class="nav-btn left" id="prevBtn" aria-label="Anterior"
+                                    title="Anterior">◀</button>
+                                <div class="track" id="track" tabindex="0" aria-live="polite"></div>
+                                <button class="nav-btn right" id="nextBtn" aria-label="Próximo"
+                                    title="Próximo">▶</button>
+                            </div>
+
+                            <!-- thumbnails -->
+                            <div class="thumbs" id="thumbs" aria-hidden="false"></div>
+
+                            <p style="margin-top:10px;color:rgba(255,255,255,0.8)">Arraste ou deslize para o lado para
+                                ver outras fotos. Clique nas miniaturas para ir direto à imagem.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="meta" aria-label="Informações e localização">
+                    <b>Unidade</b>
+                    <div>Colégio Unidade Polo — Arapongas</div>
+
+                    <b style="margin-top:12px">Endereço</b>
+                    <div id="address">RUA Pavão, 831 - Centro, Arapongas - PR, 86700-215</div>
+
+                    <b style="margin-top:12px">Localização no mapa</b>
+
+                    <!-- MAP: wrapper com borda/quadra separada -->
+                    <!-- MAP: miniatura clicável que abre o Maps em nova aba -->
+                    <div class="map-wrapper" aria-hidden="false">
+                        <a href="https://maps.app.goo.gl/iTUofhVkS7M9XJGR9" target="_blank" rel="noopener noreferrer"
+                            aria-label="Abrir localização no Google Maps"
+                            style="display:block;border-radius:8px;overflow:hidden;">
+                            <!-- substitua 'map-thumb.jpg' por uma imagem de miniatura do local ou print do mapa -->
+                            <img src="mapa.png" alt="Mapa do Colégio Unidade Polo — abrir no Google Maps"
+                                style="width:100%;height:200px;object-fit:cover;display:block;border:0" />
+                        </a>
+                    </div>
+
+
+                    <footer>
+                        <div>Clique no mapa a cima para ver a localização.</div>
+                    </footer>
+                </aside>
+                <!-- NOVA SEÇÃO: Sobre Miguel -->
+                <section aria-labelledby="sobre-miguel" style="margin-top:18px">
+                    <p style="margin:0 0 10px;color:rgba(255,255,255,0.92)">
+                        <strong>Miguel</strong>, desenvolvedor front-end. Neste portfólio você encontra
+                        projetos em HTML e JavaScript organizados por trimestre. Trabalhos completos
+                        acesse o portfólio. Para conectar profissionalmente, visite meu LinkedIn.
+                    </p>
+
+                    <!-- Botões específicos do "Sobre Miguel" (ficam abaixo do texto, separados do mapa) -->
+                    <div class="about-actions" role="group" aria-label="Ações sobre Miguel">
+                        <a class="btn btn-primary" href="inicio.html" aria-label="Entrar no portfólio de Miguel">Entrar
+                            no Portfólio</a>
+                        <a class="btn btn-linkedin" href="https://www.linkedin.com/in/miguel-bespalhok-5565802a1/?skipRedirect=true" target="_blank"
+                            rel="noopener noreferrer" aria-label="Abrir LinkedIn de Miguel">LinkedIn</a>
+                    </div>
+                </section>
+
+            </section>
+
+
+        </article>
+    </div>
+
+    <script>
+        // Lista de imagens da galeria (adicione os arquivos na mesma pasta)
+        const images = [
+            'secretaria.png',
+            'quadras_polo.jpeg',
+            'entrada.png'
+        ];
+
+        const track = document.getElementById('track');
+        const thumbs = document.getElementById('thumbs');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        // Cria slides e miniaturas
+        images.forEach((src, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'slide';
+            slide.setAttribute('data-index', i);
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `Foto ${i + 1} do Colégio Unidade Polo`;
+            slide.appendChild(img);
+            track.appendChild(slide);
+
+            const tbtn = document.createElement('button');
+            tbtn.setAttribute('aria-label', `Ir para foto ${i + 1}`);
+            const timg = document.createElement('img');
+            timg.src = src;
+            timg.alt = `Miniatura ${i + 1}`;
+            tbtn.appendChild(timg);
+            tbtn.addEventListener('click', () => goToIndex(i));
+            thumbs.appendChild(tbtn);
+        });
+
+        // Layout: calcula largura do slide visível (um por vez)
+        function slideWidth() {
+            const slide = track.querySelector('.slide');
+            return slide ? slide.getBoundingClientRect().width + 10 /* gap */ : 0;
+        }
+
+        let index = 0;
+        function update() {
+            const w = slideWidth();
+            track.style.transform = `translateX(${-index * w}px)`;
+            Array.from(thumbs.children).forEach((b, i) => b.style.outline = i === index ? '3px solid rgba(255,255,255,0.12)' : 'none');
+        }
+
+        function goToIndex(i) {
+            index = Math.max(0, Math.min(images.length - 1, i));
+            update();
+        }
+
+        prevBtn.addEventListener('click', () => goToIndex(index - 1));
+        nextBtn.addEventListener('click', () => goToIndex(index + 1));
+
+        // Drag / swipe support (pointer events)
+        let isDown = false, startX = 0, currentTranslate = 0, prevTranslate = 0;
+        track.addEventListener('pointerdown', (e) => {
+            isDown = true;
+            track.setPointerCapture(e.pointerId);
+            startX = e.clientX;
+            prevTranslate = -index * slideWidth();
+            track.style.transition = 'none';
+        });
+        window.addEventListener('pointermove', (e) => {
+            if (!isDown) return;
+            const dx = e.clientX - startX;
+            currentTranslate = prevTranslate + dx;
+            track.style.transform = `translateX(${currentTranslate}px)`;
+        });
+        window.addEventListener('pointerup', (e) => {
+            if (!isDown) return;
+            isDown = false;
+            track.releasePointerCapture(e.pointerId);
+            track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)';
+            const moved = (prevTranslate + (e.clientX - startX));
+            const w = slideWidth();
+            const movedSlides = Math.round(-moved / w);
+            goToIndex(movedSlides);
+        });
+
+        // touch fallback for older browsers
+        track.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            prevTranslate = -index * slideWidth();
+            track.style.transition = 'none';
+        }, { passive: true });
+        track.addEventListener('touchmove', (e) => {
+            const dx = e.touches[0].clientX - startX;
+            track.style.transform = `translateX(${prevTranslate + dx}px)`;
+        }, { passive: true });
+        track.addEventListener('touchend', (e) => {
+            track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)';
+            const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+            const moved = (prevTranslate + (endX - startX));
+            const w = slideWidth();
+            const movedSlides = Math.round(-moved / w);
+            goToIndex(movedSlides);
+        });
+
+        // keyboard navigation
+        track.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') goToIndex(index + 1);
+            if (e.key === 'ArrowLeft') goToIndex(index - 1);
+        });
+
+        // resize handling
+        window.addEventListener('resize', () => {
+            setTimeout(update, 120);
+        });
+
+        // inicializa
+        window.addEventListener('load', () => {
+            index = 0;
+            update();
+        });
+    </script>
+</body>
+
+</html>

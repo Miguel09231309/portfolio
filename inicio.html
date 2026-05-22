@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Escolha o Trimestre — Miguel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-image: url('capitao.png');
+    --overlay-opacity: 0.56;
+    --card-w: 920px;
+    --accent: #c8102e;
+    --muted: rgba(255,255,255,0.92);
+    --muted-2: rgba(255,255,255,0.78);
+    --radius: 14px;
+    --gap: 16px;
+    --btn-primary: linear-gradient(90deg,#1a73e8,#0f57c2);
+    --btn-ghost-border: rgba(255,255,255,0.10);
+    --glass-bg: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    --shadow: 0 18px 48px rgba(2,6,23,0.6);
+    --transition-fast: 160ms;
+    --transition-medium: 280ms;
+  }
+
+  /* reset / base */
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Montserrat, system-ui, Arial, sans-serif;color:var(--muted)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* background + overlay */
+  body{
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+    position:relative;
+  }
+  /* soft vignette + color wash for better contrast on image */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(0,0,0,0.18), transparent 20%),
+      linear-gradient(180deg, rgba(0,0,0,var(--overlay-opacity)), rgba(0,0,0,0.48));
+    z-index:0;
+    pointer-events:none;
+  }
+
+  /* main card (glass) */
+  .card{
+    width:min(var(--card-w),94%);
+    background:var(--glass-bg);
+    border-radius:var(--radius);
+    padding:32px;
+    text-align:center;
+    z-index:1;
+    position:relative;
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:var(--shadow);
+    backdrop-filter: blur(8px) saturate(110%);
+    -webkit-backdrop-filter: blur(8px) saturate(110%);
+    transform:translateY(0);
+    transition:transform var(--transition-medium), box-shadow var(--transition-medium);
+  }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 30px 70px rgba(2,6,23,0.7); }
+
+  /* header */
+  h1{margin:0 0 8px;color:var(--accent);font-size:1.6rem;line-height:1.05}
+  p{margin:0 0 18px;color:var(--muted-2);font-size:1rem}
+
+  /* choices / buttons */
+  .choices{
+    display:flex;
+    gap:var(--gap);
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:18px;
+  }
+  .choice{
+    min-width:200px;
+    padding:14px 18px;
+    border-radius:12px;
+    background:var(--btn-primary);
+    color:#fff;
+    font-weight:800;
+    cursor:pointer;
+    border:0;
+    box-shadow:0 8px 20px rgba(15,87,194,0.14);
+    transition:transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+  }
+  .choice:hover{ transform:translateY(-4px); box-shadow:0 18px 36px rgba(15,87,194,0.18); }
+  .choice:active{ transform:translateY(-1px); }
+
+  /* ghost / secondary button */
+  .choice.ghost{
+    background:transparent;
+    border:1px solid var(--btn-ghost-border);
+    color:var(--muted);
+    font-weight:700;
+    box-shadow:none;
+  }
+  .choice.ghost:hover{
+    background:rgba(255,255,255,0.02);
+    color:var(--muted);
+    transform:translateY(-3px);
+  }
+
+  /* small icon style inside buttons (optional) */
+  .choice svg{width:18px;height:18px;flex:0 0 18px;opacity:0.95}
+
+  /* responsive tweaks */
+  @media (max-width:720px){
+    .card{padding:20px}
+    h1{font-size:1.3rem}
+    p{font-size:0.95rem}
+    .choices{gap:12px}
+    .choice{min-width:unset;width:100%}
+  }
+
+  /* optional utility classes */
+  .muted{color:var(--muted-2)}
+  .center{text-align:center}
+  .small{font-size:0.9rem;padding:8px 12px;border-radius:8px}
+
+  /* accessibility focus */
+  .choice:focus{outline:3px solid rgba(200,16,46,0.14);outline-offset:4px}
+
+  /* subtle decorative accent under title */
+  .title-accent{
+    height:6px;
+    width:64px;
+    margin:12px auto 0;
+    border-radius:6px;
+    background:linear-gradient(90deg, rgba(200,16,46,0.95), rgba(26,115,232,0.9));
+    box-shadow:0 6px 18px rgba(200,16,46,0.08);
+  }
+</style>
+</head>
+
+<body>
+    <main class="card" role="main" aria-labelledby="title">
+        <h1 id="title">Escolha um Trimestre</h1>
+        <p>Selecione o trimestre que deseja ver. Dentro de cada trimestre há páginas separadas para HTML e JavaScript.</p>
+
+        <div class="choices" role="group" aria-label="Trimestres">
+            <button class="choice" data-target="1°tri.html">Primeiro Trimestre</button>
+            <button class="choice" data-target="2°tri.html">Segundo Trimestre</button>
+            <button class="choice" data-target="3°tri.html">Terceiro Trimestre</button>
+            <button class="choice" data-target="index.html">Voltar</button>
+        </div>
+
+    </main>
+
+    <script>
+        document.querySelectorAll('.choice').forEach(btn => {
+            btn.addEventListener('click', () => window.location.href = btn.getAttribute('data-target'));
+        });
+    </script>
+</body>
+
+</html>

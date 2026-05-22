@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terceiro Trimestre — Miguel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-image: url('capitao3.png');
+      --overlay-opacity: 0.55;
+      --accent: #ff7a59
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, system-ui, Arial, sans-serif;
+      color: #fff
+    }
+
+    body {
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, var(--overlay-opacity));
+      z-index: 0
+    }
+
+    header,
+    main {
+      position: relative;
+      z-index: 1
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 4px solid var(--accent)
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--accent)
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1a3b7a, #0f2b57);
+      color: #fff;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    main {
+      padding: 28px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .panel {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 18px;
+      flex-wrap: wrap
+    }
+
+    .panel .card {
+      min-width: 320px;
+      max-width: 420px;
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center
+    }
+
+    .panel .card h3 {
+      margin: 0 0 8px
+    }
+
+    .panel .card p {
+      margin: 0 0 12px;
+      opacity: 0.95
+    }
+
+    @media (max-width:720px) {
+      .panel {
+        flex-direction: column;
+        align-items: center
+      }
+
+      .panel .card {
+        width: 92%
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>3° Trimestre</h1>
+    <div class="nav">
+      <button class="btn" onclick="location.href='inicio.html'">Voltar</button>
+      <button class="btn" onclick="location.href='1°tri.html'">Ir para 1º Trimestre</button>
+      <button class="btn" onclick="location.href='2°tri.html'">Ir para 2º Trimestre</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Seções do trimestre">
+      <div class="card">
+        <h3>Projetos HTML</h3>
+        <p>Página dedicada aos links e demos em HTML do 3º trimestre.</p>
+        <button class="btn" onclick="location.href='3°tri-html.html'">Abrir HTML</button>
+      </div>
+
+      <div class="card">
+        <h3>Projetos JavaScript</h3>
+        <p>Página dedicada aos projetos e demos em JavaScript do 3º trimestre.</p>
+        <button class="btn" onclick="location.href='3°tri-js.html'">Abrir JS</button>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

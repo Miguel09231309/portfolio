@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Q3 — JS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-image: url('capitao3.png');
+      --overlay-opacity: 0.55;
+      --card-size: 260px;
+      --gap: 28px;
+      --accent: #ff7a59;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, system-ui, Arial, sans-serif;
+      color: #fff
+    }
+
+    body {
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, var(--overlay-opacity));
+      z-index: 0
+    }
+
+    header,
+    main {
+      position: relative;
+      z-index: 1
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 4px solid var(--accent)
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--accent)
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1a3b7a, #0f2b57);
+      color: #fff;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    main {
+      padding: 28px;
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(var(--card-size), 1fr));
+      gap: var(--gap);
+      align-items: start
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 18px;
+      height: var(--card-size);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform .18s, box-shadow .18s
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 56px rgba(0, 0, 0, 0.6)
+    }
+
+    .title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #fff
+    }
+
+    .url {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+      word-break: break-all;
+      margin-top: 8px;
+      flex: 1;
+      display: flex;
+      align-items: flex-end
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end
+    }
+
+    .actions a,
+    .actions button {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer;
+      color: #fff;
+      background: linear-gradient(90deg, #1a3b7a, #0f2b57);
+      text-decoration: none
+    }
+
+    .actions button.copy {
+      background: linear-gradient(90deg, #ff7a59, #ffb199)
+    }
+
+    @media (max-width:900px) {
+      :root {
+        --card-size: 220px;
+        --gap: 20px
+      }
+    }
+
+    @media (max-width:560px) {
+      :root {
+        --card-size: 160px;
+        --gap: 14px
+      }
+
+      .card {
+        padding: 12px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>JavaScript</h1>
+    <div class="nav">
+      <button class="btn" onclick="location.href='inicio.html'">Início</button>
+      <button class="btn" onclick="location.href='3°tri.html'">Voltar ao Trimestre</button>
+    </div>
+  </header>
+
+  <main>
+    <h2 style="color:var(--accent); margin-top:12px">Projetos JS — Terceiro Trimestre</h2>
+
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <script>
+    const links = [
+      /* adicione aqui os links JS do 3º trimestre */
+      { title: "Exemplo Q3 JS A", url: "https://example.com/q3-js-a" },
+      { title: "Exemplo Q3 JS B", url: "https://example.com/q3-js-b" }
+    ];
+
+    const grid = document.getElementById('grid');
+
+    function makeCard(item) {
+      const c = document.createElement('div'); c.className = 'card';
+      const t = document.createElement('div'); t.className = 'title'; t.textContent = item.title; c.appendChild(t);
+      const u = document.createElement('div'); u.className = 'url'; u.textContent = item.url; c.appendChild(u);
+      const actions = document.createElement('div'); actions.className = 'actions';
+      const open = document.createElement('a'); open.href = item.url; open.target = '_blank'; open.rel = 'noopener'; open.textContent = 'Abrir';
+      const copy = document.createElement('button'); copy.className = 'copy'; copy.textContent = 'Copiar';
+      copy.addEventListener('click', async (e) => { e.stopPropagation(); try { await navigator.clipboard.writeText(item.url); copy.textContent = 'Copiado!'; setTimeout(() => copy.textContent = 'Copiar', 1200); } catch { copy.textContent = 'Erro'; setTimeout(() => copy.textContent = 'Copiar', 1200); } });
+      actions.appendChild(open); actions.appendChild(copy);
+      c.appendChild(actions);
+      return c;
+    }
+
+    links.forEach(l => grid.appendChild(makeCard(l)));
+  </script>
+</body>
+
+</html>
