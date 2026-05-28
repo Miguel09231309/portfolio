@@ -1,543 +1,429 @@
 <!doctype html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Colégio Unidade Polo — Apresentação e Galeria</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: linear-gradient(180deg, #071029 0%, #0b1220 100%);
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --accent: #06b6d4;
-            --muted: rgba(255, 255, 255, 0.85);
-            --btn-primary: linear-gradient(90deg, #1a73e8, #0f57c2);
-            --btn-secondary: linear-gradient(90deg, #0f2b57, #1a3b7a);
-            --radius: 12px;
-            --gap: 18px;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Colégio Unidade Polo — Entrada estilo Faculdade</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: linear-gradient(180deg,#0b1220 0%,#071029 100%);
+      --card-bg: rgba(255,255,255,0.03);
+      --accent: #b88b3a; /* tom ouro/arenoso para brasão */
+      --muted: rgba(255,255,255,0.88);
+      --muted-2: rgba(255,255,255,0.75);
+      --stone: #e9e6df;
+      --shadow: 0 18px 48px rgba(0,0,0,0.6);
+      --radius: 12px;
+      --gap: 18px;
+      --slide-gap: 10px;
+    }
 
-        * {
-            box-sizing: border-box
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Arial,sans-serif;background:var(--bg);color:#fff;-webkit-font-smoothing:antialiased}
+    /* HERO estilo entrada de faculdade */
+    .hero {
+      width:100%;
+      height:300px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      background-image: linear-gradient(rgba(3,6,12,0.45), rgba(3,6,12,0.45)), url('fachada.jpg');
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 18px;
+    }
+    .hero-inner {
+      max-width:1100px;
+      width:96%;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .crest {
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.06);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:4px solid rgba(184,139,58,0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+      flex:0 0 120px;
+    }
+    .crest img{width:84%;height:84%;object-fit:contain;display:block;border-radius:50%}
+    .hero-title {
+      flex:1;
+      margin-left:12px;
+    }
+    .hero-title h1{
+      margin:0;
+      font-family:'Playfair Display', serif;
+      font-size:2.1rem;
+      color:var(--stone);
+      letter-spacing:0.6px;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .hero-title p{
+      margin:6px 0 0;
+      color:var(--muted-2);
+      font-size:1rem;
+    }
+    .hero-cta {
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .hero-cta .btn {
+      padding:10px 16px;
+      border-radius:8px;
+      font-weight:700;
+      text-decoration:none;
+      color:#fff;
+      border:0;
+      cursor:pointer;
+    }
+    .btn-visit { background: linear-gradient(90deg,#8b5e34,#b88b3a); box-shadow: 0 8px 18px rgba(184,139,58,0.12); }
+    .btn-apply { background: transparent; border:1px solid rgba(255,255,255,0.08); color:var(--stone) }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: Montserrat, system-ui, Arial, sans-serif;
-            background: var(--bg);
-            color: #fff
-        }
+    /* Card principal */
+    .wrap{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:28px 0}
+    .card{width:min(1100px,96%);background:var(--card-bg);border:1px solid rgba(255,255,255,0.04);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);text-align:left}
 
-        .wrap {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 28px
-        }
+    header{display:flex;align-items:center;gap:16px;margin-bottom:8px}
+    .logo{width:84px;height:84px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex:0 0 72px;object-fit:cover;border:2px solid rgba(255,255,255,0.04)}
+    h2.section-title{font-family:'Playfair Display',serif;color:var(--accent);margin:0 0 8px;font-size:1.2rem}
+    p.lead{margin:8px 0 14px;color:var(--muted);line-height:1.45}
 
-        .card {
-            width: min(1100px, 96%);
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: var(--radius);
-            padding: 22px;
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.6);
-            text-align: left;
-        }
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:var(--gap);align-items:start}
+    .about{font-size:0.98rem;color:rgba(255,255,255,0.95)}
+    .meta{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:10px;padding:18px;border:1px solid rgba(255,255,255,0.04)}
+    .meta b{display:block;margin-bottom:6px;color:var(--accent)}
+    .meta .address{font-size:0.95rem;color:var(--muted)}
 
-        header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 8px
-        }
+    /* GALERIA com moldura tipo pátio */
+    .gallery{margin-top:18px}
+    .carousel{position:relative;overflow:hidden;border-radius:10px;border:6px solid rgba(0,0,0,0.25);background:linear-gradient(180deg,#0f1724,#0b1220)}
+    .track{display:flex;gap:var(--slide-gap);transition:transform .28s cubic-bezier(.22,.9,.3,1);will-change:transform;padding:12px;user-select:none;touch-action:pan-y}
+    .slide{flex:0 0 auto;border-radius:8px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+    .slide img{width:100%;height:360px;object-fit:cover;display:block}
+    .thumbs{display:flex;gap:10px;margin-top:12px;overflow:auto;padding-bottom:6px}
+    .thumbs button{width:96px;height:64px;border-radius:6px;border:2px solid rgba(255,255,255,0.04);overflow:hidden;padding:0;background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(255,255,255,0.02));cursor:pointer}
+    .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+    .thumbs button.active{box-shadow:0 0 0 4px rgba(184,139,58,0.12);border-color:rgba(184,139,58,0.22)}
 
-        .logo {
-            width: 90px;
-            height: 90px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            flex: 0 0 72px;
-        }
+    .nav-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);border:0;color:#fff;padding:10px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3}
+    .nav-btn.left{left:12px}
+    .nav-btn.right{right:12px}
 
-        h1 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--accent)
-        }
+    .map-wrapper{margin-top:12px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.12)}
+    .meta-actions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-start}
+    .about-actions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-        p.lead {
-            margin: 8px 0 14px;
-            color: var(--muted);
-            line-height: 1.45
-        }
+    /* Tipografia serifada para títulos secundários */
+    h3, h4 { font-family: 'Playfair Display', serif; color:var(--stone); margin:10px 0 6px; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: var(--gap);
-            align-items: start;
-        }
+    /* Responsivo */
+    @media (max-width:1100px){ .grid{grid-template-columns:1fr} .meta{order:2} .hero{height:240px} }
+    @media (max-width:880px){
+      .slide img{height:clamp(200px,40vh,280px)}
+      .thumbs button{width:72px;height:48px}
+      .hero{height:220px}
+      .crest{display:none}
+    }
+    @media (max-width:720px){
+      .hero{height:180px;padding:12px}
+      .hero-title h1{font-size:1.4rem}
+    }
 
-        .about {
-            font-size: 0.98rem;
-            color: rgba(255, 255, 255, 0.95)
-        }
+    @media (prefers-reduced-motion:reduce){ .track{transition:none !important} }
 
-        .meta {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-            padding: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.04)
-        }
-
-        .meta b {
-            display: block;
-            margin-bottom: 6px;
-            color: var(--accent)
-        }
-
-        .actions {
-            display: flex;
-            gap: 12px;
-            margin-top: 14px;
-            flex-wrap: wrap
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border-radius: 10px;
-            border: 0;
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-        }
-
-        .btn-primary {
-            background: var(--btn-primary)
-        }
-
-        .btn-linkedin {
-            background: #0a66c2
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            color: var(--muted)
-        }
-
-        .small {
-            font-size: 0.9rem;
-            padding: 8px 12px;
-            border-radius: 8px
-        }
-
-        footer {
-            margin-top: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem
-        }
-
-        /* GALERIA */
-        .gallery {
-            margin-top: 18px;
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            background: rgba(0, 0, 0, 0.15);
-        }
-
-        .track {
-            display: flex;
-            gap: 10px;
-            transition: transform .28s cubic-bezier(.22, .9, .3, 1);
-            will-change: transform;
-            padding: 12px;
-            user-select: none;
-            -webkit-user-drag: none;
-            touch-action: pan-y;
-        }
-
-        .slide {
-            flex: 0 0 auto;
-            width: calc(100% - 24px);
-            max-width: 980px;
-            border-radius: 10px;
-            overflow: hidden;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .slide img {
-            width: 100%;
-            height: 420px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .thumbs {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            overflow: auto;
-            padding-bottom: 6px;
-        }
-
-        .thumbs button {
-            width: 84px;
-            height: 56px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            overflow: hidden;
-            padding: 0;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .thumbs img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block
-        }
-
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.45);
-            border: 0;
-            color: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 3;
-        }
-
-        .nav-btn.left {
-            left: 10px
-        }
-
-        .nav-btn.right {
-            right: 10px
-        }
-
-        /* Map wrapper separate from buttons */
-        .map-wrapper {
-            margin-top: 12px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.12);
-        }
-
-        .map-inner {
-            width: 100%;
-            height: 200px;
-        }
-
-        /* Buttons container OUTSIDE the map box */
-        .meta-actions {
-            margin-top: 14px;
-            /* ensures buttons are outside the map box */
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        /* "Sobre mim" buttons under the about text */
-        .about-actions {
-            margin-top: 14px;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        /* responsive adjustments */
-        @media (max-width:1100px) {
-            .grid {
-                grid-template-columns: 1fr
-            }
-
-            .meta {
-                order: 2
-            }
-        }
-
-        @media (max-width:720px) {
-            .slide img {
-                height: 260px
-            }
-
-            .slide {
-                width: calc(100% - 24px)
-            }
-
-            .meta-actions {
-                justify-content: flex-start
-            }
-
-            .about-actions {
-                justify-content: flex-start
-            }
-        }
-    </style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
 </head>
-
 <body>
-    <div class="wrap">
-        <article class="card" role="main" aria-labelledby="title">
-            <header>
-                <img class="logo" src="simbolo.jpg">
-                <div>
-                    <h1 id="title">Colégio Unidade Polo — Arapongas, PR</h1>
-                    <p class="lead">Conheça a Unidade Polo de Arapongas: educação de qualidade, projetos pedagógicos e
-                        forte vínculo com a comunidade.</p>
-                </div>
-            </header>
-
-            <section class="grid" aria-label="Conteúdo principal">
-                <div>
-                    <div class="about">
-                        <p>O <strong>Colégio Unidade Polo</strong> de Arapongas oferece ensino fundamental e médio com
-                            ênfase em práticas ativas, laboratórios, atividades esportivas e projetos sociais. Nossa
-                            equipe pedagógica trabalha para desenvolver competências acadêmicas e socioemocionais.
-                        </p>
-                           
-                        <p> <strong>  Curso Técnico em Inteligência Artificial e Dados</strong></p>
-                            <li> Objetivo: formar quem sabe trabalhar com dados e criar soluções básicas de IA.</li>
-                            <li>  Principais conteúdos: Python básico; manipulação de dados (pandas); visualização; conceitos de machine learning; treino e avaliação de modelos.</li>
-                            <li> Habilidades práticas: preparar conjuntos de dados, treinar modelos simples (classificação/regressão), criar protótipos (chatbot, classificador de imagens).</li>
-                            <li>  Complementos importantes: ética e privacidade de dados; apresentação de resultados; uso de bibliotecas (scikit‑learn, NumPy).</li>
-                            <li>  Resultado esperado: capacidade de montar pequenos projetos de IA e interpretar resultados para aplicações escolares ou locais.</li>
-                        
-                            <p> <strong>  Técnico em Desenvolvimento de Sistemas (DDS) </strong></p>
-                            <li>Objetivo: formar desenvolvedores capazes de criar aplicações web e sistemas.</li>
-                            <li>Principais conteúdos: lógica de programação; HTML/CSS; JavaScript (front‑end); noções de back‑end; bancos de dados (SQL).</li>
-                            <li>Habilidades práticas: construir páginas e aplicações, versionamento com Git, testar e documentar projetos.</li>
-                            <li>Projetos: desenvolvimento de aplicações reais para portfólio (sites, sistemas simples).</li>
-                            <li>Resultado esperado: criar, publicar e manter aplicações básicas; preparar portfólio para estágio/emprego.</li>
-                        
-
-                        <ul>
-                            <li>Projetos interdisciplinares e feiras científicas</li>
-                            <li>Atividades extracurriculares: esportes, música e tecnologia</li>
-                            <li>Apoio pedagógico e orientação de carreira</li>
-                        </ul>
-
-
-                        <div class="gallery" aria-label="Galeria de fotos do colégio">
-                            <h3 style="color:var(--accent);margin:12px 0 8px">Galeria de Fotos</h3>
-
-                            <!-- carousel container -->
-                            <div class="carousel" id="carousel" aria-roledescription="carousel">
-                                <button class="nav-btn left" id="prevBtn" aria-label="Anterior"
-                                    title="Anterior">◀</button>
-                                <div class="track" id="track" tabindex="0" aria-live="polite"></div>
-                                <button class="nav-btn right" id="nextBtn" aria-label="Próximo"
-                                    title="Próximo">▶</button>
-                            </div>
-
-                            <!-- thumbnails -->
-                            <div class="thumbs" id="thumbs" aria-hidden="false"></div>
-
-                            <p style="margin-top:10px;color:rgba(255,255,255,0.8)">Arraste ou deslize para o lado para
-                                ver outras fotos. Clique nas miniaturas para ir direto à imagem.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <aside class="meta" aria-label="Informações e localização">
-                    <b>Unidade</b>
-                    <div>Colégio Unidade Polo — Arapongas</div>
-
-                    <b style="margin-top:12px">Endereço</b>
-                    <div id="address">RUA Pavão, 831 - Centro, Arapongas - PR, 86700-215</div>
-
-                    <b style="margin-top:12px">Localização no mapa</b>
-
-                    <!-- MAP: wrapper com borda/quadra separada -->
-                    <!-- MAP: miniatura clicável que abre o Maps em nova aba -->
-                    <div class="map-wrapper" aria-hidden="false">
-                        <a href="https://maps.app.goo.gl/iTUofhVkS7M9XJGR9" target="_blank" rel="noopener noreferrer"
-                            aria-label="Abrir localização no Google Maps"
-                            style="display:block;border-radius:8px;overflow:hidden;">
-                            <!-- substitua 'map-thumb.jpg' por uma imagem de miniatura do local ou print do mapa -->
-                            <img src="mapa.png" alt="Mapa do Colégio Unidade Polo — abrir no Google Maps"
-                                style="width:100%;height:200px;object-fit:cover;display:block;border:0" />
-                        </a>
-                    </div>
-
-
-                    <footer>
-                        <div>Clique no mapa a cima para ver a localização.</div>
-                    </footer>
-                </aside>
-                <!-- NOVA SEÇÃO: Sobre Miguel -->
-                <section aria-labelledby="sobre-miguel" style="margin-top:18px">
-                    <p style="margin:0 0 10px;color:rgba(255,255,255,0.92)">
-                        <strong>Miguel</strong>, desenvolvedor front-end. Neste portfólio você encontra
-                        projetos em HTML e JavaScript organizados por trimestre. Trabalhos completos
-                        acesse o portfólio. Para conectar profissionalmente, visite meu LinkedIn.
-                    </p>
-
-                    <!-- Botões específicos do "Sobre Miguel" (ficam abaixo do texto, separados do mapa) -->
-                    <div class="about-actions" role="group" aria-label="Ações sobre Miguel">
-                        <a class="btn btn-primary" href="inicio.html" aria-label="Entrar no portfólio de Miguel">Entrar
-                            no Portfólio</a>
-                        <a class="btn btn-linkedin" href="https://www.linkedin.com/in/miguel-bespalhok-5565802a1/?skipRedirect=true" target="_blank"
-                            rel="noopener noreferrer" aria-label="Abrir LinkedIn de Miguel">LinkedIn</a>
-                    </div>
-                </section>
-
-            </section>
-
-
-        </article>
+  <!-- HERO: fachada / portal universitário -->
+  <div class="hero" role="banner" aria-label="Entrada do colégio estilo universidade">
+    <div class="hero-inner">
+      <div class="crest" aria-hidden="true">
+        <!-- substitua por brasão real -->
+        <img src="brasao.png" alt="Brasão da instituição">
+      </div>
+      <div class="hero-title">
+        <h1>Colégio Unidade Polo</h1>
+        <p>Unidade Arapongas — Educação técnica e formação cidadã</p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-visit" href="#" aria-label="Visitar a unidade">Visitar</a>
+        <a class="btn btn-apply" href="#" aria-label="Inscrições e informações">Inscrições</a>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Lista de imagens da galeria (adicione os arquivos na mesma pasta)
-        const images = [
-            'secretaria.png',
-            'quadras_polo.jpeg',
-            'entrada.png'
-        ];
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="title">
+      <header style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+        <img class="logo" src="simbolo.jpg" alt="Símbolo do Colégio Unidade Polo">
+        <div>
+          <h2 id="title" style="font-family:'Playfair Display',serif;margin:0;font-size:1.25rem;color:var(--stone)">Colégio Unidade Polo — Arapongas, PR</h2>
+          <p class="lead">Formação técnica, projetos interdisciplinares e vínculo com a comunidade — tradição e inovação.</p>
+        </div>
+      </header>
 
-        const track = document.getElementById('track');
-        const thumbs = document.getElementById('thumbs');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+      <section class="grid" aria-label="Conteúdo principal">
+        <div>
+          <article class="about" aria-labelledby="sobre-unidade">
+            <h3 id="sobre-unidade">Sobre a Unidade Polo</h3>
+            <p>O <strong>Colégio Unidade Polo</strong> de Arapongas oferece ensino fundamental e médio com ênfase em práticas ativas, laboratórios, atividades esportivas e projetos sociais. Nossa equipe pedagógica trabalha para desenvolver competências acadêmicas e socioemocionais.</p>
 
-        // Cria slides e miniaturas
-        images.forEach((src, i) => {
-            const slide = document.createElement('div');
-            slide.className = 'slide';
-            slide.setAttribute('data-index', i);
-            const img = document.createElement('img');
-            img.src = src;
-            img.alt = `Foto ${i + 1} do Colégio Unidade Polo`;
-            slide.appendChild(img);
-            track.appendChild(slide);
+            <h4>Curso Técnico em Inteligência Artificial e Dados</h4>
+            <ul>
+              <li>Objetivo: formar quem sabe trabalhar com dados e criar soluções básicas de IA.</li>
+              <li>Principais conteúdos: Python básico; manipulação de dados (pandas); visualização; conceitos de machine learning; treino e avaliação de modelos.</li>
+              <li>Habilidades práticas: preparar conjuntos de dados, treinar modelos simples, criar protótipos (chatbot, classificador de imagens).</li>
+              <li>Complementos: ética e privacidade; apresentação de resultados; uso de bibliotecas (scikit‑learn, NumPy).</li>
+            </ul>
 
-            const tbtn = document.createElement('button');
-            tbtn.setAttribute('aria-label', `Ir para foto ${i + 1}`);
-            const timg = document.createElement('img');
-            timg.src = src;
-            timg.alt = `Miniatura ${i + 1}`;
-            tbtn.appendChild(timg);
-            tbtn.addEventListener('click', () => goToIndex(i));
-            thumbs.appendChild(tbtn);
+            <h4>Técnico em Desenvolvimento de Sistemas (DDS)</h4>
+            <ul>
+              <li>Objetivo: formar desenvolvedores capazes de criar aplicações web e sistemas.</li>
+              <li>Conteúdos: lógica, HTML/CSS, JavaScript, noções de back‑end, bancos de dados.</li>
+              <li>Habilidades: construir aplicações, versionamento com Git, testar e documentar projetos.</li>
+            </ul>
+
+            <ul>
+              <li>Projetos interdisciplinares e feiras científicas</li>
+              <li>Atividades extracurriculares: esportes, música e tecnologia</li>
+              <li>Apoio pedagógico e orientação de carreira</li>
+            </ul>
+
+            <div class="gallery" aria-label="Galeria de fotos do colégio">
+              <h3 style="color:var(--accent);margin:12px 0 8px">Galeria de Fotos</h3>
+
+              <div class="carousel" id="carousel" aria-roledescription="carousel">
+                <button class="nav-btn left" id="prevBtn" aria-label="Anterior" title="Anterior">◀</button>
+                <div class="track" id="track" tabindex="0" aria-live="polite" aria-label="Faixa de slides"></div>
+                <button class="nav-btn right" id="nextBtn" aria-label="Próximo" title="Próximo">▶</button>
+              </div>
+
+              <div class="thumbs" id="thumbs" aria-label="Miniaturas da galeria" role="toolbar"></div>
+
+              <p style="margin-top:10px;color:rgba(255,255,255,0.8)">Arraste ou deslize para o lado para ver outras fotos. Clique nas miniaturas para ir direto à imagem.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="meta" aria-label="Informações e localização">
+          <b>Unidade</b>
+          <div>Colégio Unidade Polo — Arapongas</div>
+
+          <b style="margin-top:12px">Endereço</b>
+          <div id="address" class="address">RUA Pavão, 831 - Centro, Arapongas - PR, 86700-215</div>
+
+          <b style="margin-top:12px">Localização no mapa</b>
+          <div class="map-wrapper" aria-hidden="false">
+            <a href="https://maps.app.goo.gl/iTUofhVkS7M9XJGR9" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização no Google Maps" style="display:block;border-radius:8px;overflow:hidden;">
+              <img src="mapa.png" alt="Mapa do Colégio Unidade Polo — abrir no Google Maps" style="width:100%;height:200px;object-fit:cover;display:block;border:0" />
+            </a>
+          </div>
+
+          <div class="meta-actions">
+            <a class="btn btn-visit" href="#" aria-label="Visitar a unidade">Visitar</a>
+            <a class="btn btn-apply" href="#" aria-label="Inscrições e informações">Inscrições</a>
+          </div>
+
+          <footer style="margin-top:12px;color:rgba(255,255,255,0.7);font-size:0.9rem">
+            <div>Clique no mapa acima para ver a localização.</div>
+          </footer>
+        </aside>
+
+        <!-- Sobre Miguel -->
+        <section aria-labelledby="sobre-miguel" style="margin-top:18px">
+          <h3 id="sobre-miguel" class="sr-only">Sobre Miguel</h3>
+          <p style="margin:0 0 10px;color:rgba(255,255,255,0.92)">
+            <strong>Miguel</strong>, desenvolvedor front-end. Neste portfólio você encontra projetos em HTML e JavaScript organizados por trimestre. Trabalhos completos acesse o portfólio. Para conectar profissionalmente, visite meu LinkedIn.
+          </p>
+
+          <div class="about-actions" role="group" aria-label="Ações sobre Miguel">
+            <a class="btn btn-visit" href="inicio.html" aria-label="Entrar no portfólio de Miguel">Entrar no Portfólio</a>
+            <a class="btn btn-apply" href="https://www.linkedin.com/in/miguel-bespalhok-5565802a1/?skipRedirect=true" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn de Miguel">LinkedIn</a>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const images = [
+        'secretaria.png',
+        'quadras_polo.jpeg',
+        'entrada.png'
+      ];
+
+      const carousel = document.getElementById('carousel');
+      const track = document.getElementById('track');
+      const thumbs = document.getElementById('thumbs');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      const live = document.createElement('div');
+      live.id = 'carousel-live';
+      live.setAttribute('aria-live','polite');
+      live.setAttribute('aria-atomic','true');
+      live.className = 'sr-only';
+      carousel.appendChild(live);
+
+      images.forEach((src,i) => {
+        const slide = document.createElement('figure');
+        slide.className = 'slide';
+        slide.setAttribute('data-index', i);
+        slide.setAttribute('role','group');
+        slide.setAttribute('aria-roledescription','slide');
+        slide.setAttribute('aria-label', `Slide ${i+1} de ${images.length}`);
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Foto ${i+1} do Colégio Unidade Polo`;
+        img.loading = 'lazy';
+        img.srcset = `${src} 800w`;
+        img.sizes = '(max-width: 880px) 100vw, 800px';
+        slide.appendChild(img);
+        track.appendChild(slide);
+
+        const tbtn = document.createElement('button');
+        tbtn.type = 'button';
+        tbtn.className = 'thumb-btn';
+        tbtn.setAttribute('aria-label', `Ir para foto ${i+1}`);
+        tbtn.setAttribute('data-index', i);
+
+        const timg = document.createElement('img');
+        timg.src = src;
+        timg.alt = `Miniatura ${i+1}`;
+        timg.loading = 'lazy';
+        tbtn.appendChild(timg);
+
+        tbtn.addEventListener('click', () => goToIndex(i));
+        tbtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tbtn.click(); } });
+
+        thumbs.appendChild(tbtn);
+      });
+
+      const slides = Array.from(track.querySelectorAll('.slide'));
+      const thumbButtons = Array.from(thumbs.querySelectorAll('button'));
+      let index = 0, isDown = false, startX = 0, prevTranslate = 0, currentTranslate = 0, isTransitioning = false;
+      const GAP = 10;
+
+      track.setAttribute('role','list');
+      slides.forEach(s => s.setAttribute('role','listitem'));
+      track.tabIndex = 0;
+
+      function slideWidth(){
+        const slide = track.querySelector('.slide');
+        if (!slide) return 0;
+        const rect = slide.getBoundingClientRect();
+        return rect.width + GAP;
+      }
+
+      function update(){
+        const w = slideWidth();
+        track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)';
+        track.style.transform = `translateX(${-index * w}px)`;
+        thumbButtons.forEach((b,i) => {
+          if (i === index){
+            b.classList.add('active');
+            b.setAttribute('aria-pressed','true');
+            b.style.outline = '3px solid rgba(255,255,255,0.12)';
+          } else {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed','false');
+            b.style.outline = 'none';
+          }
         });
+        live.textContent = `Slide ${index+1} de ${slides.length}`;
+      }
 
-        // Layout: calcula largura do slide visível (um por vez)
-        function slideWidth() {
-            const slide = track.querySelector('.slide');
-            return slide ? slide.getBoundingClientRect().width + 10 /* gap */ : 0;
-        }
+      function goToIndex(i){
+        if (isTransitioning) return;
+        index = Math.max(0, Math.min(images.length-1, i));
+        isTransitioning = true;
+        update();
+        const onEnd = () => { isTransitioning = false; track.removeEventListener('transitionend', onEnd); };
+        track.addEventListener('transitionend', onEnd);
+      }
 
-        let index = 0;
-        function update() {
-            const w = slideWidth();
-            track.style.transform = `translateX(${-index * w}px)`;
-            Array.from(thumbs.children).forEach((b, i) => b.style.outline = i === index ? '3px solid rgba(255,255,255,0.12)' : 'none');
-        }
+      prevBtn.addEventListener('click', () => goToIndex(index-1));
+      nextBtn.addEventListener('click', () => goToIndex(index+1));
 
-        function goToIndex(i) {
-            index = Math.max(0, Math.min(images.length - 1, i));
-            update();
-        }
+      track.addEventListener('pointerdown', (e) => {
+        isDown = true; startX = e.clientX; prevTranslate = -index * slideWidth(); track.style.transition = 'none';
+        try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      });
 
-        prevBtn.addEventListener('click', () => goToIndex(index - 1));
-        nextBtn.addEventListener('click', () => goToIndex(index + 1));
+      track.addEventListener('pointermove', (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        currentTranslate = prevTranslate + dx;
+        track.style.transform = `translateX(${currentTranslate}px)`;
+      });
 
-        // Drag / swipe support (pointer events)
-        let isDown = false, startX = 0, currentTranslate = 0, prevTranslate = 0;
-        track.addEventListener('pointerdown', (e) => {
-            isDown = true;
-            track.setPointerCapture(e.pointerId);
-            startX = e.clientX;
-            prevTranslate = -index * slideWidth();
-            track.style.transition = 'none';
-        });
-        window.addEventListener('pointermove', (e) => {
-            if (!isDown) return;
-            const dx = e.clientX - startX;
-            currentTranslate = prevTranslate + dx;
-            track.style.transform = `translateX(${currentTranslate}px)`;
-        });
-        window.addEventListener('pointerup', (e) => {
-            if (!isDown) return;
-            isDown = false;
-            track.releasePointerCapture(e.pointerId);
-            track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)';
-            const moved = (prevTranslate + (e.clientX - startX));
-            const w = slideWidth();
-            const movedSlides = Math.round(-moved / w);
-            goToIndex(movedSlides);
-        });
+      const endPointer = (e) => {
+        if (!isDown) return;
+        isDown = false;
+        try { track.releasePointerCapture(e.pointerId); } catch (err) {}
+        track.style.transition = '';
+        const moved = currentTranslate;
+        const w = slideWidth();
+        const movedSlides = Math.round(-moved / w);
+        goToIndex(movedSlides);
+        currentTranslate = 0;
+      };
 
-        // touch fallback for older browsers
-        track.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            prevTranslate = -index * slideWidth();
-            track.style.transition = 'none';
-        }, { passive: true });
-        track.addEventListener('touchmove', (e) => {
-            const dx = e.touches[0].clientX - startX;
-            track.style.transform = `translateX(${prevTranslate + dx}px)`;
-        }, { passive: true });
-        track.addEventListener('touchend', (e) => {
-            track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)';
-            const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
-            const moved = (prevTranslate + (endX - startX));
-            const w = slideWidth();
-            const movedSlides = Math.round(-moved / w);
-            goToIndex(movedSlides);
-        });
+      track.addEventListener('pointerup', endPointer);
+      track.addEventListener('pointercancel', endPointer);
+      track.addEventListener('pointerleave', endPointer);
 
-        // keyboard navigation
-        track.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') goToIndex(index + 1);
-            if (e.key === 'ArrowLeft') goToIndex(index - 1);
-        });
+      track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; prevTranslate = -index * slideWidth(); track.style.transition = 'none'; }, { passive: true });
+      track.addEventListener('touchmove', (e) => { const dx = e.touches[0].clientX - startX; track.style.transform = `translateX(${prevTranslate + dx}px)`; }, { passive: true });
+      track.addEventListener('touchend', (e) => { track.style.transition = 'transform .28s cubic-bezier(.22,.9,.3,1)'; const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX; const moved = prevTranslate + (endX - startX); const w = slideWidth(); const movedSlides = Math.round(-moved / w); goToIndex(movedSlides); });
 
-        // resize handling
-        window.addEventListener('resize', () => {
-            setTimeout(update, 120);
-        });
+      document.addEventListener('keydown', (e) => { if (e.key === 'ArrowLeft') { e.preventDefault(); goToIndex(index-1); } if (e.key === 'ArrowRight') { e.preventDefault(); goToIndex(index+1); } });
 
-        // inicializa
-        window.addEventListener('load', () => {
-            index = 0;
-            update();
-        });
-    </script>
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          const visibleWidth = carousel.clientWidth;
+          slides.forEach(s => s.style.width = `${visibleWidth}px`);
+          track.style.width = `${visibleWidth * slides.length}px`;
+          update();
+        }, 120);
+      });
+
+      let loaded = 0;
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (!img) { loaded++; return; }
+        if (img.complete) { loaded++; if (loaded === slides.length) init(); }
+        else { img.addEventListener('load', () => { loaded++; if (loaded === slides.length) init(); }); img.addEventListener('error', () => { loaded++; if (loaded === slides.length) init(); }); }
+      });
+
+      function init(){
+        const visibleWidth = carousel.clientWidth;
+        slides.forEach(s => s.style.width = `${visibleWidth}px`);
+        track.style.width = `${visibleWidth * slides.length}px`;
+        if (thumbButtons[0]){ thumbButtons[0].classList.add('active'); thumbButtons[0].setAttribute('aria-pressed','true'); }
+        update();
+      }
+
+      setTimeout(() => { if (loaded === 0) init(); }, 600);
+
+      window.PoloCarousel = { goTo: (i) => goToIndex(i), next: () => goToIndex(index+1), prev: () => goToIndex(index-1), currentIndex: () => index };
+    })();
+  </script>
 </body>
-
 </html>
