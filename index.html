@@ -3,133 +3,256 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Unidade Polo — Cursos do Futuro</title>
+  <title>Unidade Polo — Cursos</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #000;
-      --accent: #06b6d4;
-      --secondary: #a855f7;
-      --text: rgba(255,255,255,0.9);
-      --card-bg: rgba(255,255,255,0.05);
-      --radius: 14px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Montserrat, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('matrix-bg.gif') center/cover no-repeat;
-      opacity: 0.25;
-      z-index: -1;
-    }
-    header {
-      display: flex; align-items: center; gap: 10px;
-      padding: 24px 40px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-    header img { width: 36px; height: 36px; }
-    header h1 { font-size: 1.2rem; font-weight: 700; color: var(--secondary); }
-    .hero {
-      padding: 60px 40px;
-      display: flex; flex-wrap: wrap;
-      align-items: center; justify-content: space-between;
-      gap: 40px;
-    }
-    .hero-text h2 {
-      font-size: 3rem; font-weight: 700; line-height: 1.1;
-      color: var(--accent); text-shadow: 0 0 12px var(--accent);
-    }
-    .card {
-      flex: 1 1 420px;
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius);
-      padding: 24px;
-      backdrop-filter: blur(6px);
-    }
-    .card h3 { color: var(--accent); margin-bottom: 10px; }
-    .code-img {
-      flex: 1 1 420px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
-    .code-img img { width: 100%; height: 100%; object-fit: cover; }
-    section.cursos {
-      padding: 40px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-      gap: 24px;
-    }
-    .curso {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .curso h4 { color: var(--secondary); margin-bottom: 8px; }
-    /* Galeria */
-    .gallery { padding: 40px; }
-    .gallery h3 { color: var(--accent); margin-bottom: 12px; }
-    .gallery-images {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 16px;
-    }
-    .gallery-images img {
-      width: 100%; height: 180px; object-fit: cover;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 12px rgba(0,0,0,0.6);
-      transition: all 0.3s ease;
-    }
-    .gallery-images img:hover {
-      box-shadow: 0 0 18px var(--accent);
-      transform: scale(1.03);
-    }
-    /* Mapa */
-    .map { padding: 40px; }
-    .map h3 { color: var(--accent); margin-bottom: 12px; }
-    .map iframe {
-      width: 100%; height: 300px; border: 0;
-      border-radius: var(--radius);
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
-    footer {
-      text-align: center; padding: 20px;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    .about-actions {
-  margin-top: 30px;
+:root {
+  --bg-gradient: linear-gradient(135deg, #001f3f 0%, #003366 35%, #0066cc 70%, #00bfff 100%);
+  --accent: #00e5ff;
+  --secondary: #4fc3f7;
+  --text: rgba(255, 255, 255, 0.95);
+  --muted: rgba(255, 255, 255, 0.7);
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --radius: 14px;
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg-gradient);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle animated background layers */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(800px 400px at 10% 10%, rgba(0,123,255,0.12), transparent 10%),
+    radial-gradient(700px 350px at 90% 90%, rgba(0,200,255,0.10), transparent 12%);
+  z-index: -2;
+  pointer-events: none;
+  animation: bgShift 12s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08), rgba(0,0,0,0.18));
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes bgShift {
+  from { transform: translateY(0px) scale(1); opacity: 0.9; }
+  to   { transform: translateY(-20px) scale(1.02); opacity: 1; }
+}
+
+/* Header centralizado com logo maior */
+header {
   display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  gap: 20px;
+  flex-direction: column; /* empilha logo e título */
+  align-items: center;    /* centraliza horizontalmente */
+  justify-content: center;/* centraliza verticalmente */
+  padding: 40px 20px;
+  border-bottom: 1px solid var(--glass-border);
+  gap: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  backdrop-filter: blur(4px);
+}
+
+header img {
+  width: 120px;  /* logo maior */
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 6px 18px rgba(0, 187, 255, 0.18));
+  transition: transform 0.28s ease, filter 0.28s ease;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+header img:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 10px 28px rgba(0, 187, 255, 0.28));
+}
+
+header h1 {
+  font-size: 2.6rem;   /* título maior */
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 14px #00bfff, 0 0 28px #0074D9, 0 0 40px #4fc3f7;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin: 0;
+  animation: glowTitle 2.2s infinite alternate;
+  text-align: center;
+}
+
+@keyframes glowTitle {
+  from { text-shadow: 0 0 14px #00bfff, 0 0 28px #0074D9; transform: translateY(0); }
+  to   { text-shadow: 0 0 22px #4fc3f7, 0 0 44px #00e5ff; transform: translateY(-2px); }
+}
+
+/* Main hero centralizado */
+.hero {
+  padding: 56px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Hero title */
+.hero-text h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-shadow: 0 6px 30px rgba(0, 150, 255, 0.08);
+  line-height: 1.05;
+}
+
+/* Card principal */
+.card {
+  width: 100%;
+  max-width: 820px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: var(--radius);
+  padding: 26px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.45);
+}
+
+.card h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+/* Cursos grid */
+section.cursos {
+  padding: 40px 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.curso {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.curso:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,120,255,0.12);
+}
+
+.curso h4 {
+  color: var(--secondary);
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+}
+
+/* Gallery */
+.gallery {
+  padding: 36px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.gallery h3 {
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.gallery-images img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.gallery-images img:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,150,255,0.12);
+}
+
+/* Map */
+.map {
+  padding: 36px 24px;
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.map h3 {
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.map iframe {
+  width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+}
+
+/* Actions / Buttons */
+.about-actions {
+  margin: 28px 0 40px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 800;
   text-decoration: none;
   color: #fff;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
 }
 
 .btn-linkedin {
-  background: #0a66c2;
+  background: linear-gradient(180deg, #0a66c2, #084b9a);
 }
 
 .btn-portfolio {
@@ -137,27 +260,58 @@
 }
 
 .btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 18px var(--accent);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,150,255,0.12);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  border-top: 1px solid var(--glass-border);
+  margin-top: 20px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  header h1 { font-size: 2.2rem; }
+  header img { width: 100px; height: 100px; }
+  .hero-text h2 { font-size: 2.2rem; }
+  .card { padding: 20px; }
+}
+
+@media (max-width: 520px) {
+  header { padding: 28px 16px; }
+  header h1 { font-size: 1.8rem; letter-spacing: 1px; }
+  header img { width: 88px; height: 88px; }
+  .hero { padding: 36px 16px; gap: 20px; }
+  .gallery-images img { height: 140px; }
+  .map iframe { height: 260px; }
+}
+
+.logo{
+  width: 250px; height: 250px;
 }
 
   </style>
 </head>
 <body>
   <header>
-    <img src="simbolo.jpg" alt="Logo Unidade Polo">
+    <img class="logo" src="simbolo.png" alt="Logo Unidade Polo">
     <h1>Unidade Polo</h1>
   </header>
 
   <section class="hero">
     <div class="hero-text">
-      <h2>Bem-vindo aos<br>Cursos do Futuro</h2>
+      <h2>Bem-vindo aos<br>Cursos do Colégio Unidade Polo</h2>
     </div>
     <div class="card">
-      <h3>💠 Sobre Miguel Bespalhok</h3>
+      <h3>💠 Sou Miguel Bespalhok</h3>
       <p>Sou um <strong>Desenvolvedor Front-End</strong> apaixonado por criar interfaces modernas e intuitivas. No Colégio Unidade Polo, aplico meus conhecimentos em <strong>HTML, CSS, JavaScript</strong> e frameworks como <strong>React</strong> para desenvolver projetos educacionais e tecnológicos.</p>
     </div>
-  
+
   </section>
 
   <section class="cursos">
