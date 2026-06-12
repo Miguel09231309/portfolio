@@ -1,147 +1,154 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfólio Trimestral com Abas e QR Codes</title>
+  <title>Primeiro Trimestre — Miguel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0f1724; --card:#0b1220; --muted:#94a3b8;
-      --accent:#06b6d4; --glass: rgba(255,255,255,0.03);
+    :root {
+      --bg-image: url('capitao1.png');
+      --overlay-opacity: 0.55;
+      --accent: #c8102e
     }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,Arial,sans-serif;background:#071025;color:#e6eef8;padding:28px}
-    .wrap{max-width:1100px;margin:0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-    header h1{font-size:20px;margin:0;color:var(--accent)}
-    .card{background:var(--card);border-radius:12px;padding:14px}
-    .tabs{display:flex;gap:8px;margin-bottom:12px}
-    .tab{padding:8px 12px;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer}
-    .tab.active{background:var(--glass);color:var(--accent)}
-    .trim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .trim{background:var(--glass);padding:12px;border-radius:10px}
-    .trim h3{margin:0 0 8px 0;color:var(--accent)}
-    label{display:block;font-size:12px;color:var(--muted);margin-top:8px}
-    input,textarea{width:100%;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:#e6eef8}
-    textarea{resize:vertical}
-    .row{display:flex;gap:8px;margin-top:10px}
-    button{background:var(--accent);color:#042027;border:0;padding:8px 10px;border-radius:8px;cursor:pointer}
-    button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--muted)}
-    .qr-grid{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px}
-    .qr-item{text-align:center}
-    .qr-item img{border-radius:8px}
-    .small{font-size:12px;color:var(--muted)}
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, system-ui, Arial, sans-serif;
+      color: #fff
+    }
+
+    body {
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, var(--overlay-opacity));
+      z-index: 0
+    }
+
+    header,
+    main {
+      position: relative;
+      z-index: 1
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.35);
+      border-bottom: 4px solid var(--accent)
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--accent)
+    }
+
+    .nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 12px
+    }
+
+    .btn {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #1a3b7a, #0f2b57);
+      color: #fff;
+      border: 0;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    main {
+      padding: 28px;
+      max-width: 1200px;
+      margin: 0 auto
+    }
+
+    .panel {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 18px;
+      flex-wrap: wrap
+    }
+
+    .panel .card {
+      min-width: 320px;
+      max-width: 420px;
+      padding: 18px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center
+    }
+
+    .panel .card h3 {
+      margin: 0 0 8px
+    }
+
+    .panel .card p {
+      margin: 0 0 12px;
+      opacity: 0.95
+    }
+
+    @media (max-width:720px) {
+      .panel {
+        flex-direction: column;
+        align-items: center
+      }
+
+      .panel .card {
+        width: 92%
+      }
+    }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <header>
-      <h1>Portfólio Trimestral</h1>
-      <div>
-        <button id="saveBtn">Salvar</button>
-        <button id="resetBtn" class="ghost">Limpar</button>
-      </div>
-    </header>
-
-    <div class="card">
-      <div class="tabs" id="tabs">
-        <button class="tab active" data-tab="trimestres">Trimestres</button>
-        <button class="tab" data-tab="import">Importar Links</button>
-        <button class="tab" data-tab="extras">Extras JS</button>
-        <button class="tab" data-tab="compartilhar">Compartilhar</button>
-      </div>
-
-      <div id="mainPanel"></div>
+  <header>
+    <h1>1° Trimestre</h1>
+    <div class="nav">
+      <button class="btn" onclick="location.href='inicio.html'">Voltar</button>
+      <button class="btn" onclick="location.href='2°tri.html'">Ir para 2º Trimestre</button>
+      <button class="btn" onclick="location.href='3°tri.html'">Ir para 3º Trimestre</button>
+      <!-- Novo botão Google AI -->
+      <button class="btn" onclick="window.open('https://ai.google/','_blank')">Google AI</button>
     </div>
-  </div>
+  </header>
 
-  <script>
-    const defaultData = {
-      trimestres: [
-        { name: "1º Trimestre", projects: { html:null, js:null, py:null } },
-        { name: "2º Trimestre", projects: { html:null, js:null, py:null } },
-        { name: "3º Trimestre", projects: { html:null, js:null, py:null } }
-      ]
-    };
-    let data = JSON.parse(JSON.stringify(defaultData));
+  <main>
+    <section class="panel" aria-label="Seções do trimestre">
+      <div class="card">
+        <h3>Projetos HTML</h3>
+        <p>Página dedicada aos links e demos em HTML.</p>
+        <button class="btn" onclick="location.href='1°tri-html.html'">Abrir HTML</button>
+      </div>
 
-    const tabs = document.getElementById('tabs');
-    const mainPanel = document.getElementById('mainPanel');
-
-    function renderTrimestres(){
-      const container = document.createElement('div');
-      container.className = 'trim-grid';
-      data.trimestres.forEach((t, idx) => {
-        const box = document.createElement('div');
-        box.className = 'trim';
-        box.innerHTML = `
-          <h3>${t.name}</h3>
-          <label>HTML</label><input type="text" placeholder="Link HTML" />
-          <label>JS</label><input type="text" placeholder="Link JS" />
-          <label>Python</label><textarea rows="3" placeholder="Link ou código Python"></textarea>
-        `;
-        // Se for o 2º trimestre, adiciona QR Codes
-        if(idx===1){
-          box.innerHTML += `
-            <div style="margin-top:14px;padding:10px;border:1px solid rgba(255,255,255,0.1);border-radius:8px;background:rgba(255,255,255,0.02)">
-              <h4 style="margin:0;color:#06b6d4">QR Codes de Apps</h4>
-              <p class="small">Escaneie para abrir os links:</p>
-              <div class="qr-grid">
-                <div class="qr-item">
-                  <img src="https://chart.googleapis.com/chart?chs=160x160&cht=qr&chl=https://ai.google/" alt="QR Google AI" />
-                  <div class="small">Google AI</div>
-                </div>
-                <div class="qr-item">
-                  <img src="https://chart.googleapis.com/chart?chs=160x160&cht=qr&chl=https://play.google.com/store" alt="QR Play Store" />
-                  <div class="small">Google Play</div>
-                </div>
-                <div class="qr-item">
-                  <img src="https://chart.googleapis.com/chart?chs=160x160&cht=qr&chl=https://github.com/Miguel09231309" alt="QR GitHub" />
-                  <div class="small">Meu GitHub</div>
-                </div>
-                <div class="qr-item">
-                  <img src="https://chart.googleapis.com/chart?chs=160x160&cht=qr&chl=https://alifer2211.github.io/teste.js/teste.js" alt="QR Projeto Teste" />
-                  <div class="small">Projeto Teste</div>
-                </div>
-              </div>
-            </div>
-          `;
-        }
-        container.appendChild(box);
-      });
-      mainPanel.innerHTML = '';
-      mainPanel.appendChild(container);
-    }
-
-    function renderImport(){
-      mainPanel.innerHTML = `<h3 style="color:var(--accent)">Importar Links</h3><p class="small">Cole seu array let links = [...] aqui.</p>`;
-    }
-    function renderExtras(){
-      mainPanel.innerHTML = `<h3 style="color:var(--accent)">Extras JS</h3><p class="small">Nenhum extra no momento.</p>`;
-    }
-    function renderCompartilhar(){
-      mainPanel.innerHTML = `<h3 style="color:var(--accent)">Compartilhar</h3><p class="small">Aqui você poderá gerar link compartilhável.</p>`;
-    }
-
-    function activateTab(name){
-      tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab===name));
-      if(name==='trimestres') renderTrimestres();
-      if(name==='import') renderImport();
-      if(name==='extras') renderExtras();
-      if(name==='compartilhar') renderCompartilhar();
-    }
-
-    tabs.addEventListener('click', e=>{
-      const btn = e.target.closest('.tab');
-      if(!btn) return;
-      activateTab(btn.dataset.tab);
-    });
-
-    document.getElementById('saveBtn').addEventListener('click', ()=>alert('Salvo localmente.'));
-    document.getElementById('resetBtn').addEventListener('click', ()=>{data=JSON.parse(JSON.stringify(defaultData));activateTab('trimestres');});
-
-    // Inicial
-    activateTab('trimestres');
-  </script>
+      <div class="card">
+        <h3>Projetos JavaScript</h3>
+        <p>Página dedicada aos projetos e demos em JavaScript.</p>
+        <button class="btn" onclick="location.href='1°tri-js.html'">Abrir JS</button>
+      </div>
+    </section>
+  </main>
 </body>
+
 </html>
